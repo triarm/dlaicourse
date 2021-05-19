@@ -15,13 +15,13 @@ function getModel() {
 	model.add(tf.layers.dense({units: 128, activation: 'relu'}));
 	model.add(tf.layers.dense({units: 10, activation: 'softmax'}));
 
-	model.compile({optimizer: tf.train.adam(), loss: 'categoricalCrossentropy', metrics: ['accuracy']});
+	model.compile({optimizer: tf.train.adam(), loss: 'categoricalCrossentropy', metrics: ['acc']});
 
 	return model;
 }
 
 async function train(model, data) {
-	const metrics = ['loss', 'val_loss', 'accuracy', 'val_accuracy'];
+	const metrics = ['loss', 'val_loss', 'acc', 'val_acc'];
 	const container = { name: 'Model Training', styles: { height: '640px' } };
 	const fitCallbacks = tfvis.show.fitCallbacks(container, metrics);
   
